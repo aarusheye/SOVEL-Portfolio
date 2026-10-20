@@ -1,8 +1,8 @@
-# Recruiter demo
+# SOVEL Demo
 
 **Status: no recording is included.**
 
-Target a 75–90 second walkthrough recorded from the actual application. Use original synthetic examples or reusable public material, and review the complete recording for private information before publishing.
+A 75–90 second SOVEL walkthrough showing the actual application and its three workspaces. Use original synthetic examples or reusable public material, and review the complete recording for private information before publishing.
 
 | Time | Show | Explain |
 | --- | --- | --- |

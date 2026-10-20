@@ -13,7 +13,7 @@ Developed by [Aarushi Singh](https://github.com/aarusheye)
 
 SOVEL is a biomedical intelligence workspace that brings three tasks into one local application: understanding laboratory information, exploring biomedical questions, and examining evidence from scientific papers. Its engineering emphasis is traceability: retain the source, distinguish observations from interpretation, and make uncertainty visible.
 
-The accepted V1 runs locally for a single user with local model inference. It is an educational and research portfolio project; outputs do not establish diagnoses or clinical decisions.
+The accepted V1 runs locally for a single user with local model inference. It is an educational and research application; outputs do not establish diagnoses or clinical decisions.
 
 ## Why I built it
 
@@ -99,10 +99,10 @@ Post-V1 priorities are latency optimization, broader document/workflow support, 
 ## Screenshots and demo
 
 **Screenshot placeholder:** reviewed interface captures are pending. See the [exact capture list](assets/screenshots/README.md).  
-**Demo placeholder:** a 60–90 second recorded walkthrough is pending. See the [storyboard](assets/demo/README.md).
+**Demo placeholder:** a 75–90 second SOVEL walkthrough showing the actual application and its three workspaces is pending. See the [storyboard](assets/demo/README.md).
 
 ## Source Availability
 
-SOVEL is a privately developed portfolio project. Production source code and implementation details are not publicly distributed. This repository contains project documentation, demonstrations, and selected technical materials only.
+SOVEL is a privately developed biomedical software project. Production source code and implementation details are not publicly distributed. This repository contains project documentation, demonstrations, and selected technical materials only.
 
 © 2026 Aarushi Singh. All rights reserved.
