@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="780" viewBox="0 0 920 780" role="img" aria-labelledby="title desc">
+  <title id="title">SOVEL conceptual architecture</title>
+  <desc id="desc">Browser workspaces connect to a local application service. The service coordinates document processing and local model interaction, then validation and structured output. Private cache reuse has compatibility checks. Some Health processing is deterministic and does not need inference.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="920" height="780" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="49" fill="#0f172a" font-size="27" font-weight="700">SOVEL</text>
+    <text x="42" y="78" fill="#475569" font-size="18">Conceptual architecture · Local, single-user V1</text>
+    <rect x="42" y="108" width="836" height="608" rx="16" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="66" y="140" fill="#64748b" font-size="16">LOCAL DEVICE</text>
+    <rect x="150" y="162" width="620" height="82" rx="12" fill="#0f172a"/>
+    <text x="460" y="194" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Browser interface</text>
+    <text x="460" y="222" text-anchor="middle" fill="#cbd5e1" font-size="17">Health · Research Copilot · Evidence</text>
+    <path d="M460 244 V270" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="150" y="276" width="620" height="68" rx="12" fill="#ecfdf5" stroke="#059669"/>
+    <text x="460" y="305" text-anchor="middle" fill="#064e3b" font-size="21" font-weight="700">Local application service</text>
+    <text x="460" y="330" text-anchor="middle" fill="#065f46" font-size="16">Request lifecycle · Cancellation · Bounded work</text>
+    <path d="M300 344 V374 M620 344 V374" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="98" y="380" width="334" height="82" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="265" y="411" text-anchor="middle" fill="#1e3a8a" font-size="20" font-weight="700">Document processing</text>
+    <text x="265" y="440" text-anchor="middle" fill="#334155" font-size="16">Native text · OCR · Source context</text>
+    <rect x="488" y="380" width="334" height="82" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="655" y="411" text-anchor="middle" fill="#1e3a8a" font-size="20" font-weight="700">Model / research layer</text>
+    <text x="655" y="440" text-anchor="middle" fill="#334155" font-size="16">Local inference where required</text>
+    <path d="M432 420 H480 M265 462 V490 H380 V512 M655 462 V490 H540 V512" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="214" y="518" width="492" height="70" rx="12" fill="#f5f3ff" stroke="#c4b5fd"/>
+    <text x="460" y="547" text-anchor="middle" fill="#4c1d95" font-size="20" font-weight="700">Scientific / source validation</text>
+    <text x="460" y="574" text-anchor="middle" fill="#475569" font-size="16">Source ownership · Structured output checks</text>
+    <path d="M460 588 V615" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="92" y="620" width="390" height="65" rx="12" fill="#0f172a"/>
+    <text x="287" y="647" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">Structured workspace output</text>
+    <text x="287" y="671" text-anchor="middle" fill="#cbd5e1" font-size="15">Results · Evidence · Review states</text>
+    <rect x="532" y="620" width="296" height="65" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+    <text x="680" y="647" text-anchor="middle" fill="#7c2d12" font-size="19" font-weight="700">Private cache</text>
+    <text x="680" y="671" text-anchor="middle" fill="#7c2d12" font-size="15">Compatibility checks before reuse</text>
+    <path d="M670 588 V614" stroke="#64748b" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+    <text x="42" y="751" fill="#475569" font-size="16">Conceptual responsibilities; implementation contracts remain private.</text>
+  </g>
+</svg>
