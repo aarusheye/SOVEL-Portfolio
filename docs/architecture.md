@@ -1,55 +1,35 @@
-# Architecture
+# How SOVEL works
 
-[← Project overview](../README.md) · [Validation](validation.md)
+[Project overview](../README.md) · [Validation record](validation.md)
 
-SOVEL V1 is a local, single-user biomedical workspace. This document describes responsibilities and tradeoffs at a conceptual level. It deliberately omits production code, prompts, internal schemas, validation rules, and model-routing details.
+![Public and local inference paths, document processing and usage controls](../assets/architecture/overview.svg)
 
-![Conceptual local application architecture](../assets/architecture/overview.svg)
+## From a browser action to an answer
 
-## Workspace separation
+The public application serves the React frontend and Python API from one HTTPS origin on Render. The browser handles workspace selection, attachments and presentation. The backend validates incoming requests and owns model calls. In the cloud it calls the OpenAI API directly. In the local configuration it can call Ollama with Qwen3-14B.
 
-The interface separates Health, Research Copilot, and Evidence because their source and interpretation requirements differ. A laboratory result must retain reported measurement information; a research proposal must be identifiable as a proposal; a paper comparison must preserve which source supports each observation.
+| Layer | Technology | Responsibility |
+| --- | --- | --- |
+| Interface | React, TypeScript, Vite, Zod | Build the browser UI, keep the submitted question and files associated with the result, and validate response shapes before display. |
+| Application | Python, FastAPI, Pydantic, HTTPX | Validate inputs, coordinate document and generation steps, and communicate with the inference provider. |
+| Documents | unpdf, native PDF geometry processing, Tesseract OCR | Read text and layout where available and use OCR for supported scanned content. |
+| Hosting and durable state | Docker, Render, SQLite on persistent storage | Deliver the application and retain usage accounting across restarts. |
+| Inference | Direct OpenAI API in the cloud, Ollama locally | Generate structured text for tasks that require a model. |
 
-Health organizes laboratory information and compatible dated comparisons. Copilot supports concepts and conceptual planning from questions and supplied notes. Evidence analyzes supplied papers and their supporting excerpts. This separation gives each workflow an appropriate presentation and verification boundary.
+## Why the workspaces take different paths
 
-## Document ingestion
+**Research Assistant.** A question, selected depth and any supported document context shape the request. The service checks the structured answer and applies scientific-content rules before the interface displays it. A bounded repair can address an invalid response. A well-formed response can still be irrelevant or scientifically wrong.
 
-Document preparation distinguishes usable native text from pages that need OCR. Supported inputs are classified and prepared for the relevant workspace, with source context retained for inspection. Missing metadata, uncertain extraction, and unreadable input are explicit review or failure conditions.
+**Research Evidence Workspace.** Text is associated with its originating paper and page. The pipeline builds paper-level records before synthesizing across sources. Claims and excerpts are checked for attribution so that a reader can revisit the passage. A comparison is limited by the supplied papers, the text that could be extracted and the excerpts selected for analysis.
 
-For laboratory workflows, fidelity means retaining reported values, units, and reference ranges rather than letting generative text invent measurements. For paper workflows, fidelity means preserving source identity and the excerpts used in analysis. Successful low-level extraction alone does not establish that the entire user workflow succeeded; verification also exercises upload, routing, processing, and rendering.
+**Health Report Explainer.** A native PDF may carry usable text and table positions. A scan may need OCR. SOVEL uses deterministic parsing to associate reported measurements with units, ranges and source context. Extraction uncertainty matters because a shifted column can change the meaning of a number. Comparison across dates depends on compatible reports and measurement context.
 
-## Local processing and model interaction
+For multi-file Evidence and Health submissions, the reviewed release requires the whole attached batch to be ready and compatible. An unreadable document can be removed before continuing. Manual workspace selection preserves the classified document type.
 
-The React/TypeScript browser interface communicates with a local Python/FastAPI service. V1 uses local Ollama inference. Deterministic processing and model-assisted interpretation have different responsibilities: measurements require faithful handling, while generated scientific explanations require checks against their permitted source context.
+## Access, privacy and operating limits
 
-Locality reduces the need to transmit biomedical documents to remote inference services. It also makes local hardware, model availability, and document complexity part of the latency tradeoff. V1's accepted scope is loopback-only operation for one user, rather than a hosted service with account or tenant isolation.
+Guest verification establishes a browser session. Daily messages are shared across eligible AI features. The service checks session limits and reserves from a durable shared budget before dispatching a guest model call. Concurrent calls and internal repairs need financial headroom. A repair belongs to the same user action. Bounded uploads, processing deadlines and rate limits constrain resource use.
 
-## Scientific validation and source ownership
+The optional analytics system stores aggregate activity separately from the spending ledger. Its design excludes raw prompts, answers, documents and raw IP addresses from analytics. Broad research categories are classified locally, with low-frequency categories suppressed. Daily and weekly detail expires after 90 days while analytics runs. Selected all-time totals remain. Session counts can include repeat visitors.
 
-Generated output is checked for structural validity and tested scientific/source consistency before successful output is accepted. In Evidence comparisons, each paper retains ownership of its observations. A finding supported by one source must not silently become a finding attributed to another.
-
-The interface exposes supporting excerpts and study context so the user can inspect the basis of an interpretation. Methods and limitations matter alongside findings, particularly when discussing whether a design supports a causal conclusion. These checks address defined failure modes; they do not prove that every possible scientific statement is correct.
-
-## Private caching
-
-Reusable Evidence results are associated with their source and processing context. Compatibility checks and revalidation guard reuse as processing contracts evolve. Failed or invalid processing is not promoted into a successful reusable result.
-
-Caching trades repeated work for local data retention: private caches can contain source excerpts and need responsible local lifecycle management. The public showcase includes neither cache contents nor internal cache identities or formats.
-
-## Request ownership and cancellation
-
-Requests and background work have explicit lifecycles. Document changes, attachment removal, cancellation, and new sessions must not let an obsolete response restore previous state. Backend work has bounded execution and cleanup behavior so a stalled document or model operation does not imply unbounded waiting.
-
-These controls are application resource-management measures. They are not a claim of operating-system sandboxing or a hard memory quota.
-
-## Browser and UI layer
-
-The UI presents structured results, review states, errors, and inspectable source context. Client validation checks incoming structured output before rendering. Desktop/mobile and light/dark checks help verify that evidence remains usable across layouts.
-
-Actual browser checks exercise the same File-to-render path as normal use. Transport tests and component tests provide complementary coverage; neither substitutes for a successful real upload and rendered result.
-
-## Engineering boundaries
-
-The principal design tradeoff is local control with finite compute. Large or uncached document workflows can be slow, and model-generated text still requires critical review. Remote deployment, broader workflow coverage, and latency improvements are post-V1 work. Public documentation communicates the design without distributing the proprietary implementation.
-
-© 2026 Aarushi Singh. All rights reserved.
+Cloud AI workflows may send relevant question or document text to the model provider. The local inference configuration offers a different processing path. Use synthetic reports when exploring the workspace and follow the public application's [privacy notice](https://sovel.punimon.com/privacy).
