@@ -1,17 +1,19 @@
-# SOVEL Demo
+# A short walkthrough of SOVEL
 
-**Status: no recording is included.**
+[Open SOVEL](https://sovel.punimon.com) · [Screenshot gallery](../screenshots/README.md)
 
-A 75–90 second SOVEL walkthrough showing the actual application and its three workspaces. Use original synthetic examples or reusable public material, and review the complete recording for private information before publishing.
+### 1. Explain a concept at two depths
 
-| Time | Show | Explain |
-| --- | --- | --- |
-| 0–10 s | Home and three workspace choices | “SOVEL is a local biomedical workspace for health information, research questions, and scientific evidence.” |
-| 10–25 s | Completed Health example | “Reported laboratory values retain their units, ranges, and source context; missing information stays visible.” |
-| 25–40 s | Copilot question and response | “Explanation depth supports learning and conceptual research discussion, with uncertainty made explicit.” |
-| 40–65 s | Completed two-paper Evidence comparison | “Findings stay connected to the paper that supports them. Here are the methods, limitations, and supporting excerpt.” |
-| 65–80 s | Validation summary and local-first design | “V1 combines automated checks with actual browser validation. Two latency-only evaluation misses remain documented.” |
+Choose **Research Assistant** and ask *How does DNA differ from RNA?* Read the answer, then choose another depth. The selected depth can change while the original answer remains on screen. Use the explicit update action to request the new explanation. Each generated answer uses a guest message.
 
-Use completed outputs or disclose cuts/time-lapse rather than implying generation is instantaneous. A brief single-paper view can replace part of the comparison segment if it clarifies the workflow. Keep source text readable and show the app rather than terminal or source code.
+In the November 27 tested interface, the action is **Update answer · 1 message**. After the update, **Ask another question** becomes primary again. An earlier interface uses **Regenerate** for the same explicit action.
 
-Suggested future filename: `sovel-walkthrough.mp4`. After review, add a working recording link and a real thumbnail to the main README. No thumbnail or recording is fabricated here.
+### 2. Follow a claim to its paper
+
+Choose **Research Evidence Workspace** and attach two public papers you have permission to use. Wait for both files to finish processing. Ask *Which outcomes did the studies measure, and what limits the comparison?* Open a supporting excerpt and compare it with the original paper. Different endpoints or populations can make a direct comparison inappropriate.
+
+### 3. Inspect a reported measurement
+
+Choose **Health Report Explainer** and attach a synthetic laboratory report with printed values, units and reference ranges. Compare one extracted row against the original. If a range is missing or a row is uncertain, keep that uncertainty visible. A second compatible dated report can illustrate how measurements change over time.
+
+This is a self-guided demonstration. The [validation record](../../docs/validation.md) describes the workflows exercised in testing.
