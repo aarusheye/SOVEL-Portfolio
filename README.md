@@ -2,7 +2,7 @@
 
 **Created and developed by Aarushi Singh**
 
-**[Open SOVEL](https://sovel.punimon.com)**
+**Live Application: [sovel.punimon.com](https://sovel.punimon.com)**
 
 SOVEL brings three kinds of biomedical reading into one browser workspace. Ask a question about a concept, compare the evidence in papers you supply, or make sense of the measurements in a laboratory report.
 
@@ -11,8 +11,6 @@ SOVEL brings three kinds of biomedical reading into one browser workspace. Ask a
 | **Research Assistant** | Understand a concept or develop a research question. Choose an explanation depth and explicitly request a new answer when you want another level of detail. |
 | **Research Evidence Workspace** | Read one paper closely or compare several. Inspect a finding alongside its supporting excerpt and check which paper it came from. |
 | **Health Report Explainer** | Read a supported lab report in plain language. Review the reported values, units and reference ranges, and compare compatible dated reports. |
-
-![SOVEL home screen showing the three workspaces, document attachment control and question field](assets/screenshots/home-desktop.jpg)
 
 ## Why I built SOVEL
 
@@ -30,4 +28,4 @@ Use public papers or synthetic examples. **Do not enter identifiable patient inf
 - **November 2026** — The public beta brought browser guest access and hosted inference to SOVEL. Local inference remains available in the project.
 - **November 27, 2026** — Release testing covered document routing, guest message accounting and the explicit answer-update interaction. [Validation record](docs/validation.md)
 
-[Workspace walkthrough](assets/demo/README.md) · [Screenshot gallery](assets/screenshots/README.md) · [Architecture and technology](docs/architecture.md)
+[Architecture and technology](docs/architecture.md)

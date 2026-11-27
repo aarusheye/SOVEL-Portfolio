@@ -32,4 +32,4 @@ Guest verification establishes a browser session. Daily messages are shared acro
 
 The optional analytics system stores aggregate activity separately from the spending ledger. Its design excludes raw prompts, answers, documents and raw IP addresses from analytics. Broad research categories are classified locally, with low-frequency categories suppressed. Daily and weekly detail expires after 90 days while analytics runs. Selected all-time totals remain. Session counts can include repeat visitors.
 
-Cloud AI workflows may send relevant question or document text to the model provider. The local inference configuration offers a different processing path. Use synthetic reports in demonstrations and follow the public application's [privacy notice](https://sovel.punimon.com/privacy).
+Cloud AI workflows may send relevant question or document text to the model provider. The local inference configuration offers a different processing path. Use synthetic reports when exploring the workspace and follow the public application's [privacy notice](https://sovel.punimon.com/privacy).
