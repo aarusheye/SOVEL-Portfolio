@@ -1,6 +1,14 @@
+<p align="center">
+  <img src="assets/branding/sovel-logo.png" alt="SOVEL logo" width="600">
+</p>
+
 <h1 align="center">SOVEL — Biomedical Intelligence Workspace</h1>
 <p align="center">Created and developed by Aarushi Singh</p>
-<p align="center"><strong>Live Application: <a href="https://sovel.punimon.com">sovel.punimon.com</a></strong></p>
+<p align="center">
+  <a href="https://sovel.punimon.com"><img src="https://img.shields.io/badge/Launch%20SOVEL-163453?style=for-the-badge" alt="Launch SOVEL"></a>
+  <br>
+  <a href="https://sovel.punimon.com">sovel.punimon.com</a>
+</p>
 
 ## Overview
 
